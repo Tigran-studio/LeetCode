@@ -2,12 +2,6 @@ import java.util.*;
 
 class Permutation
 {
-    public static void main(String[] args)
-    {
-        int[] nums = {1, 4, 2};
-        List<List<Integer>> finalList = permute(nums);
-        System.out.println(finalList.toString());
-    }
     public static List<List<Integer>> permute(int[] nums) {
         List<List<Integer>> finalList = new LinkedList<>();
         int numsLengh = nums.length;

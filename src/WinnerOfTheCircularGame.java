@@ -1,9 +1,5 @@
 public class WinnerOfTheCircularGame
 {
-    public static void main(String[] args)
-    {
-        System.out.println("Winner of the Game is: "+(findTheWinner(5,2)));
-    }
     public static int findTheWinner(int n, int k) {
         if(n==1)
             return 1;

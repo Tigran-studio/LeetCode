@@ -4,27 +4,29 @@ import java.util.List;
 
 public class LuckyNumbersInAMatrix
 {
-    public static void main(String[] args)
+    public List<Integer> luckyNumbers(int[][] matrix)
     {
-        int [][] matrix = { {7,8},
-                {1,2}};
-        System.out.println("Your lucky number is: "+luckyNumbers(matrix));
-    }
-    public static List<Integer> luckyNumbers (int[][] matrix) {
-        int maxValueFromColumns = 0;
-        for(int i = 0; i < matrix.length; i++)
+        for (int[] row : matrix)
         {
-            int minValueFromRow = 0;
-            for (int k = 0; k < matrix[i].length; k++ )
-            {
-                Arrays.sort(matrix[i]);
-                minValueFromRow = matrix[i][0];
-            }
-            if(maxValueFromColumns<minValueFromRow)
-                maxValueFromColumns=minValueFromRow;
+            int minIndex = findMinIndex(row);
+            if (row[minIndex] == findMaxNumOfColumn(matrix, minIndex))
+                return List.of(row[minIndex]);
         }
-        List<Integer> list = new ArrayList<>();
-        list.add(maxValueFromColumns);
-        return list;
+        return new ArrayList<>();
+    }
+    private int findMinIndex(int[] row)
+    {
+        int minIndex = 0;
+        for (int i = 0; i < row.length; i++)
+            if (row[i] < row[minIndex])
+                minIndex = i;
+        return minIndex;
+    }
+    private int findMaxNumOfColumn(int[][] matrix, int index)
+    {
+        int template = 0;
+        for (int i = 0; i < matrix.length; i++)
+            template = Math.max(template, matrix[i][index]);
+        return template;
     }
 }
